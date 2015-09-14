@@ -18,8 +18,10 @@ with questions for class!
     with p stages.  What is the speedup over serial execution of the
     same tasks?
 
-4.  Consider the following list of tasks (assume they can't be pipelined):
+    speedup = number of stges in the pipeline = p
 
+4.  Consider the following list of tasks (assume they can't be pipelined):
+    - what is the longest dependency chain? // indep of # of parallel computations
       compile GCC (1 hr)
       compile OpenMPI (0.5 hr) - depends on GCC
       compile OpenBLAS (0.25 hr) - depends on GCC
@@ -30,6 +32,10 @@ with questions for class!
     What is the minimum serial time between starting to compile and having
     a compiled application?  What is the minimum parallel time given
     an arbitrary number of processors?
+
+    longest dependency chain: GCC (1hr) - OpenBLAS (0.25hr) - LAPACK (0.5hr) - application (0.5hr)
+    minimum parallel time = 2.25hrs
+    minimum serial time = 2.75hrs
 
 5.  Clone the membench repository from GitHub:
 

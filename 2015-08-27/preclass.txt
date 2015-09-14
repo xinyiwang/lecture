@@ -8,13 +8,31 @@
     you should use a script to produce this plot, with both the serial
     fraction and the maximum number of cores as parameters.
 
+    plot Amdahl's law: s(p) = 1/(0.1 + (0.9/p)) for 1 <= p <= 128
+
+    // python matplotlib code
+    x = np.arange(1,128,1)
+    y = 1/(0.1 + 9/(10*x))
+    plt.plot(x,y)
+    plt.show()
+
 2.  Suppose a particular program can be partitioned into perfectly
     independent tasks, each of which takes time tau.  Tasks are
     set up, scheduled, and communicated to p workers at a (serial)
     central server; this takes an overhead time alpha per task.
     What is the theoretically achievable throughput (tasks/time)?
 
+    take:
+    K = number of tasks
+    T = time per task
+    
+    Time at server for K tasks = K * alpha
+    Serial time for K tasks at worker = K * T
+
+    best throughput = K/(K*alpha) = 1/alpha
+
 3.  Under what circumstances is it best to not tune?
+    - premature optimization
 
 4.  The class cluster consists of eight nodes and fifteen Xeon Phi
     accelerator boards.  Based on an online search for information on
