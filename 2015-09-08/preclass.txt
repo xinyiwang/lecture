@@ -22,15 +22,26 @@ something into an already-full cache.
 the memory-based AI of this code? (Hint: What is the memory-based AI of just the
 innermost loop?)
 
+memory-based AI of the innermost loop = N + N = 2N
+bytes handled in the inner most loop = 2N * 8 bytes = 16N bytes
+Memory-based AI = 2N / 16 N = 1/8 
+
 
 2. Now suppose that the cache is substantially larger than 16N, but
 substantially smaller than 8N^2. What is the AI now?
+
+We can cache a single row of A and perform operations on all of B
+=> AI is reduced by a factor of 2 => 1/4
 
 
 3. Now suppose the cache is large enough to hold all of A, B, and C. What is the
 AI now? (Hint: Writing to a byte of memory not already in the cache incurs two
 memory transfers: one to move the data to the cache for writing, and one to move
 the written data back to main memory.)
+
+# flops = 2*(N^3)
+# memory transfer = 16*(N^2) + 16*(N^2) = 32*(N^2)
+AI = # flops / # memory transfer = N/16
 
 
 4. Cache overflowing. On my CPU (Intel i7-4700 HQ), L1, L2, and L3 caches are 32

@@ -18,6 +18,15 @@ In practice, this took X time.  This includes
 Consider the following questions:
 
 1. What is a simple model that would predict this time?
+	Assuming that per-row counting is done in parallel:
+	Total time taken = 	  (time to start process/ explain procedure) 
+						+ (longest time taken to count a row)
+						+ (time for instructor to gather counts and do arithmetic)
+
 2. What about a simple model to predict time for one person to count?
+	We won't need to explain procedure/ gather counts/ go arithmetic, so:
+	Total time taken 	= time to do a linear scan of the class
+						= n_students * (time taken to count a student)
+
 3. How big should the class be before the parallel method takes less time?
 
